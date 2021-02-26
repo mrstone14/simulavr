@@ -112,9 +112,9 @@ class HWUart: public Hardware, public TraceValueRegister {
                unsigned int udre_interrupt,
                unsigned int tx_interrupt,
                int instance_id = 0);
-        virtual unsigned int CpuCycle();
+        unsigned int CpuCycle() override;
 
-        void Reset();
+        void Reset() override;
 
         void SetUdr(unsigned char val);  
         void SetUsr(unsigned char val);  
@@ -128,7 +128,7 @@ class HWUart: public Hardware, public TraceValueRegister {
         unsigned char GetUbrr();
         unsigned char GetUbrrhi();
 
-        void ClearIrqFlag(unsigned int);
+        void ClearIrqFlag(unsigned int) override;
         void CheckForNewSetIrq(unsigned char);
         void CheckForNewClearIrq(unsigned char);
 

@@ -60,7 +60,7 @@ class AdcPin: public SimulationMember {
         std::ifstream       _anaFile;
 
         // SimulationMember
-        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns = 0);
+        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns = 0) override;
         
     public:
         AdcPin(const char* fileName, Net& pinNet) throw();

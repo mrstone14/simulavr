@@ -44,8 +44,8 @@ class RWWriteToFile: public RWMemoryMember {
                   const std::string &tracename,
                   const std::string &filename);
  protected:
-    unsigned char get() const;
-    void set(unsigned char);
+    unsigned char get() const override;
+    void set(unsigned char) override;
 
     std::ostream &os;
     std::ofstream ofs;
@@ -63,8 +63,8 @@ class RWReadFromFile: public RWMemoryMember {
                    const std::string &tracename,
                    const std::string &filename);
  protected:
-    unsigned char get() const;
-    void set(unsigned char);
+    unsigned char get() const override;
+    void set(unsigned char) override;
 
     std::istream &is;
     mutable std::ifstream ifs;
@@ -78,8 +78,8 @@ class RWExit: public RWMemoryMember {
  public:
     RWExit(TraceValueRegister *registry, const std::string &tracename="");
  protected:
-    unsigned char get() const;
-    void set(unsigned char);
+    unsigned char get() const override;
+    void set(unsigned char) override;
 };
 
 //! abort() on access memory
@@ -88,8 +88,8 @@ class RWAbort: public RWMemoryMember {
  public:
     RWAbort(TraceValueRegister *registry, const std::string &tracename="");
  protected:
-    unsigned char get() const;
-    void set(unsigned char);
+    unsigned char get() const override;
+    void set(unsigned char) override;
 };
 
 #endif

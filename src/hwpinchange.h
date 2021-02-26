@@ -82,14 +82,14 @@ class HWPcir : public HWPcifrApi , public HWPcirMaskApi , public Hardware {
 		unsigned	convertBitToVector(unsigned bit) const throw();
 
 	public: // HWPcifrApi
-		bool			getPcifr(unsigned pcifrBit) throw();
-		void			setPcifr(unsigned pcifrBit) throw();
+		bool			getPcifr(unsigned pcifrBit) throw() override;
+		void			setPcifr(unsigned pcifrBit) throw() override;
 
 	public: // HWPcirMaskApi
-		void			setPcifrMask(unsigned char val) throw();
+		void			setPcifrMask(unsigned char val) throw() override;
 		unsigned char	getPcifrMask() throw();
 
-		void			setPcicrMask(unsigned char val) throw();
+		void			setPcicrMask(unsigned char val) throw() override;
 		unsigned char	getPcicrMask() throw();
 
         
@@ -98,8 +98,8 @@ class HWPcir : public HWPcifrApi , public HWPcirMaskApi , public Hardware {
             pcifr_reg;
         
 	private:	// Hardware
-        void Reset();
-        void ClearIrqFlag(unsigned int vector);
+        void Reset() override;
+        void ClearIrqFlag(unsigned int vector) override;
 
 	
 };
@@ -120,11 +120,11 @@ class HWPcmsk : public HWPcmskApi , public HWPcmskPinApi {
             ) throw();
 
 	public: // HWPcmskApi
-		void			setPcmskMask(unsigned char val) throw();
-		unsigned char	getPcmskMask() throw();
+		void			setPcmskMask(unsigned char val) throw() override;
+		unsigned char	getPcmskMask() throw() override;
 
 	public: // HWPcmskPinApi
-		void			pinChanged(unsigned bit) throw();
+		void			pinChanged(unsigned bit) throw() override;
 
         IOReg<HWPcmsk> pcmsk_reg;
 };
@@ -150,7 +150,7 @@ class PinChange : public HasPinNotifyFunction {
         
         
 	private:	// HasPinNotifyFunction
-        void PinStateHasChanged(Pin*);
+        void PinStateHasChanged(Pin*) override;
 };
 
 #endif

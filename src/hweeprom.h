@@ -79,11 +79,11 @@ class HWEeprom: public Hardware, public Memory, public TraceValueRegister {
         HWEeprom(AvrDevice *core, HWIrqSystem *irqs, unsigned int size, unsigned int irqVec, int devMode = DEVMODE_NORMAL);
         virtual ~HWEeprom();
 
-        virtual unsigned int CpuCycle();
-        void Reset();
-        void ClearIrqFlag(unsigned int vector);
+        unsigned int CpuCycle() override;
+        void Reset() override;
+        void ClearIrqFlag(unsigned int vector) override;
 
-        void WriteMem(const unsigned char *, unsigned int offset, unsigned int size);
+        void WriteMem(const unsigned char *, unsigned int offset, unsigned int size) override;
         void WriteAtAddress(unsigned int, unsigned char);
         unsigned char ReadFromAddress(unsigned int);
 

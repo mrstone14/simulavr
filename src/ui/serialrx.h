@@ -37,7 +37,7 @@ class SerialRxBasic: public SimulationMember, public HasPinNotifyFunction {
         std::map < std::string, Pin *> allPins;
         unsigned long long baudrate;
 
-        void PinStateHasChanged(Pin*);
+        void PinStateHasChanged(Pin*) override;
         virtual void CharReceived(unsigned char c)=0;
 
         int highCnt;
@@ -66,7 +66,7 @@ class SerialRxBasic: public SimulationMember, public HasPinNotifyFunction {
         void Reset();
         virtual Pin* GetPin(const char *name) ;
         virtual ~SerialRxBasic(){};
-        virtual int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0);
+        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) override;
  };
 
 
@@ -74,7 +74,7 @@ class SerialRxBasic: public SimulationMember, public HasPinNotifyFunction {
 class SerialRxBuffered: public SerialRxBasic{
  	protected:
         std::vector<unsigned char> buffer;
-        virtual void CharReceived(unsigned char c);
+        void CharReceived(unsigned char c) override;
  	public:
  		unsigned char Get();
  		long Size();
@@ -87,11 +87,11 @@ class SerialRx: public SerialRxBasic, public ExternalType{
         UserInterface *ui;
         std::string name;
 
-        virtual void CharReceived(unsigned char c);
+        void CharReceived(unsigned char c) override;
     public:
         SerialRx(UserInterface *_ui, const char *_name, const char *baseWindow);
         virtual ~SerialRx(){};
-        virtual void SetNewValueFromUi(const std::string &);
+        void SetNewValueFromUi(const std::string &) override;
  };
 
 #endif

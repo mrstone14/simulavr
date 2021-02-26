@@ -60,11 +60,11 @@ class HWPort: public Hardware, public TraceValueRegister {
         ~HWPort();
         
         void CalcOutputs(void);  //!< Calculate the new output value to be transmitted to the environment
-        std::string GetPortString(void); //!< returns a string representation of output states
-        void Reset(void);
-        std::string GetName(void) { return myName; } //!< returns the port name as given in constructor
+        std::string GetPortString(); //!< returns a string representation of output states
+        void Reset() override;
+        std::string GetName() { return myName; } //!< returns the port name as given in constructor
         Pin& GetPin(unsigned char pinNo); //!< returns a pin reference of pin with pin number
-        int GetPortSize(void) { return portSize; } //!< returns, how much bits this port controls
+        int GetPortSize() { return portSize; } //!< returns, how much bits this port controls
         
         void SetPort(unsigned char val); //!< setter method for port register
         void SetDdr(unsigned char val);  //!< setter method for data direction register

@@ -26,7 +26,7 @@ class PinMonitor : public HasPinNotifyFunction {
 					const char*	pinLowStr	= 0
 					) throw();
 	private:	// HasPinNotifyFunction
-        void PinStateHasChanged(Pin*);
+        void PinStateHasChanged(Pin*) override;
 	};
 
 #endif

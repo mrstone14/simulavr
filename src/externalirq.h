@@ -62,14 +62,14 @@ class ExternalIRQHandler: public Hardware, public IOSpecialRegClient {
         void registerIrq(int vector, int irqBit, ExternalIRQ* extirq);
         
         // from Hardware
-        virtual void ClearIrqFlag(unsigned int vector);
-        virtual void Reset(void);
-        virtual bool IsLevelInterrupt(unsigned int vector);
-        virtual bool LevelInterruptPending(unsigned int vector);
+        void ClearIrqFlag(unsigned int vector) override;
+        void Reset() override;
+        bool IsLevelInterrupt(unsigned int vector) override;
+        bool LevelInterruptPending(unsigned int vector) override;
         
         // from IOSpecialRegClient
-        virtual unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv);
-        virtual unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v);
+        unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv) override;
+        unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v) override;
         
 };
 
@@ -102,8 +102,8 @@ class ExternalIRQ: public IOSpecialRegClient {
         ExternalIRQ(IOSpecialReg *ctrl, int ctrlOffset, int ctrlBits);
         
         // from IOSpecialRegClient
-        virtual unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv);
-        virtual unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v);
+        unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv) override;
+        unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v) override;
 };
 
 //! External interrupt (INT0, INT1...) on a single pin, one and 2 bit configuration
@@ -125,12 +125,12 @@ class ExternalIRQSingle: public ExternalIRQ, public HasPinNotifyFunction {
         ExternalIRQSingle(IOSpecialReg *ctrl, int ctrlOffset, int ctrlBits, Pin *pin, bool _8515mode = false);
         
         // from ExternalIRQ
-        void ChangeMode(unsigned char m);
-        bool fireAgain(void);
-        bool mustSetFlagOnFire(void);
+        void ChangeMode(unsigned char m) override;
+        bool fireAgain(void) override;
+        bool mustSetFlagOnFire() override;
         
         // from HasPinNotifyFunction
-        void PinStateHasChanged(Pin *pin);
+        void PinStateHasChanged(Pin *pin) override;
 };
 
 //! Pin-change interrupt on all pins of a port
@@ -146,7 +146,7 @@ class ExternalIRQPort: public ExternalIRQ, public HasPinNotifyFunction {
         ExternalIRQPort(IOSpecialReg *ctrl, Pin* pinList[8]);
         
         // from HasPinNotifyFunction
-        void PinStateHasChanged(Pin *pin);
+        void PinStateHasChanged(Pin *pin) override;
 };
 
 #endif

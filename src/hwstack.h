@@ -144,12 +144,12 @@ class HWStackSram: public HWStack, public TraceValueRegister {
         //! Creates a stack instance
         HWStackSram(AvrDevice *core, int bitsize, bool initRAMEND = false);
 
-        virtual void Push(unsigned char val);
-        virtual unsigned char Pop();
-        virtual void PushAddr(unsigned long addr);
-        virtual unsigned long PopAddr();
+        void Push(unsigned char val) override;
+        unsigned char Pop() override;
+        void PushAddr(unsigned long addr) override;
+        unsigned long PopAddr() override;
 
-        virtual void Reset();
+        void Reset() override;
         
         IOReg<HWStackSram> sph_reg;
         IOReg<HWStackSram> spl_reg;
@@ -165,12 +165,12 @@ class ThreeLevelStack: public HWStack, public TraceValueRegister {
         ThreeLevelStack(AvrDevice *core);
         ~ThreeLevelStack();
         
-        virtual void Push(unsigned char val);
-        virtual unsigned char Pop();
-        virtual void PushAddr(unsigned long addr);
-        virtual unsigned long PopAddr();
+        void Push(unsigned char val) override;
+        unsigned char Pop() override;
+        void PushAddr(unsigned long addr) override;
+        unsigned long PopAddr() override;
 
-        virtual void Reset();
+        void Reset() override;
 };
 
 #endif

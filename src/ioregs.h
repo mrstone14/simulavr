@@ -38,7 +38,7 @@ class AddressExtensionRegister: public Hardware, public TraceValueRegister {
 
     public:
         AddressExtensionRegister(AvrDevice *core, const std::string &regname, unsigned bitsize);
-        void Reset() { reg_val = 0; }
+        void Reset() override { reg_val = 0; }
         unsigned char GetRegVal() { return reg_val; }
         void SetRegVal(unsigned char val) { reg_val = val & reg_mask; }
 

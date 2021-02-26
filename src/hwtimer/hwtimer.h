@@ -76,10 +76,10 @@ class BasicTimerUnit: public Hardware, public TraceValueRegister {
                        int countersize = 8);
         ~BasicTimerUnit();
         //! Perform a reset of this unit
-        void Reset();
+        void Reset() override;
         
         //! Process timer/counter unit operations by CPU cycle
-        virtual unsigned int CpuCycle();
+        unsigned int CpuCycle() override;
 
         //! register analog comparator unit for input capture source
         void RegisterACompForICapture(HWAcomp *acomp);
@@ -239,7 +239,7 @@ class HWTimer8: public BasicTimerUnit {
                  IRQLine* tcompB,
                  PinAtPort* outB);
         //! Perform a reset of this unit
-        void Reset();
+        void Reset() override;
 };
 
 //! Extends BasicTimerUnit to provide common support to all types of 16Bit timer units
@@ -331,7 +331,7 @@ class HWTimer16: public BasicTimerUnit {
                   IRQLine* ticap,
                   ICaptureSource* icapsrc);
         //! Perform a reset of this unit
-        void Reset(void);
+        void Reset() override;
 };
 
 //! Timer unit with 8Bit counter and no output compare unit
@@ -362,7 +362,7 @@ class HWTimer8_0C: public HWTimer8 {
                     int unit,
                     IRQLine* tov);
         //! Perform a reset of this unit
-        void Reset(void);
+        void Reset() override;
 };
 
 //! Timer unit with 8Bit counter and one output compare unit
@@ -394,7 +394,7 @@ class HWTimer8_1C: public HWTimer8 {
                     IRQLine* tcompA,
                     PinAtPort* outA);
         //! Perform a reset of this unit
-        void Reset(void);
+        void Reset() override;
 };
 
 //! Timer unit with 8Bit counter and 2 output compare unit
@@ -448,7 +448,7 @@ class HWTimer8_2C: public HWTimer8 {
                     IRQLine* tcompB,
                     PinAtPort* outB);
         //! Perform a reset of this unit
-        void Reset(void);
+        void Reset() override;
 };
 
 //! Timer unit with 16Bit counter and one output compare unit
@@ -502,7 +502,7 @@ class HWTimer16_1C: public HWTimer16 {
                      IRQLine* ticap,
                      ICaptureSource* icapsrc);
         //! Perform a reset of this unit
-        void Reset(void);
+        void Reset() override;
 };
 
 //! Timer unit with 16Bit counter and 2 output compare units and 2 config registers
@@ -564,7 +564,7 @@ class HWTimer16_2C2: public HWTimer16 {
                       ICaptureSource* icapsrc,
                       bool is_at8515);
         //! Perform a reset of this unit
-        void Reset(void);
+        void Reset() override;
 };
 
 //! Timer unit with 16Bit counter and 2 output compare units, but 3 config registers
@@ -627,7 +627,7 @@ class HWTimer16_2C3: public HWTimer16 {
                       IRQLine* ticap,
                       ICaptureSource* icapsrc);
         //! Perform a reset of this unit
-        void Reset(void);
+        void Reset() override;
 };
 
 //! Timer unit with 16Bit counter and 3 output compare units
@@ -692,7 +692,7 @@ class HWTimer16_3C: public HWTimer16 {
                      IRQLine* ticap,
                      ICaptureSource* icapsrc);
         //! Perform a reset of this unit
-        void Reset(void);
+        void Reset() override;
 };
 
 //! PWM output unit for timer 1 on ATtiny25/45/85
@@ -887,9 +887,9 @@ class HWTimerTinyX5: public Hardware,
         unsigned char Get_DT1B() { return dt1b_inout_val.GetBusValue(); }
 
         //! IO register interface set method, see IOSpecialRegClient
-        unsigned char set_from_reg(const IOSpecialReg *reg, unsigned char nv);
+        unsigned char set_from_reg(const IOSpecialReg *reg, unsigned char nv) override;
         //! IO register interface get method, see IOSpecialRegClient
-        unsigned char get_from_client(const IOSpecialReg *reg, unsigned char v);
+        unsigned char get_from_client(const IOSpecialReg *reg, unsigned char v) override;
 
         //! Set clock source for prescaler
         void SetPrescalerClock(bool pcke);
@@ -932,11 +932,11 @@ class HWTimerTinyX5: public Hardware,
         ~HWTimerTinyX5();
 
         //! Performs the async clocking, if necessary
-        int Step(bool &untilCoreStepFinished, SystemClockOffset *nextStepIn_ns);
+        int Step(bool &untilCoreStepFinished, SystemClockOffset *nextStepIn_ns) override;
         //! Perform a reset of this unit
-        void Reset();
+        void Reset() override;
         //! Process timer/counter unit operations by CPU cycle
-        unsigned int CpuCycle();
+        unsigned int CpuCycle() override;
 };
 
 #endif

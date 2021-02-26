@@ -49,7 +49,7 @@ class UserInterface: public SimulationMember, private Socket, public ExternalTyp
         int waitOnAckFromTclDone;
 
         //this is mainly for controlling the ui interface itself from the gui
-        void SetNewValueFromUi(const std::string &);
+        void SetNewValueFromUi(const std::string &) override;
     public:
         void AddExternalType(const char *name, ExternalType *p) {
             extMembers[name]=p;
@@ -63,7 +63,7 @@ class UserInterface: public SimulationMember, private Socket, public ExternalTyp
         ~UserInterface();
         void SendUiNewState(const std::string &s, const char &c);
 
-        int Step(bool &, SystemClockOffset *nextStepIn_ns=0);
+        int Step(bool &, SystemClockOffset *nextStepIn_ns=0) override;
         void SwitchUpdateOnOff(bool PollFreq);
         void Write(const std::string &s);
 };

@@ -115,7 +115,8 @@ public:
     TwiceTV(const std::string &_name, TraceValue *_ref)
         : TraceValue(_ref->bits()+1, _name), ref(_ref) {}
     
-    virtual void cycle() {
+    void cycle() override
+    {
         change(ref->value()*2);
         set_written();
     }

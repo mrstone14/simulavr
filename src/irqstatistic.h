@@ -108,7 +108,7 @@ class IrqStatistic: public Printable {
     private:
         AvrDevice *core; // used to get the (file) name and clk speed of the core device
         std::map<unsigned int, IrqStatisticPerVector> entries;
-        void operator()();
+        void operator()() override;
 
         friend std::ostream& operator<<(std::ostream &, const IrqStatistic&);
 

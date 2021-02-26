@@ -53,7 +53,7 @@ class Scope : public SimulationMember {
         Scope(UserInterface *ui, const std::string &name, unsigned int noOfChannels, const char *baseWindow);
         virtual ~Scope();
         Pin *GetPin(unsigned int no); 
-        virtual int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns){return 0;} //what we should step here?
+        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns) override {return 0;} //what we should step here?
         void SetInStateForChannel(unsigned int channel, Pin& p);
 };
 

@@ -113,7 +113,7 @@ class HWUSI: public Hardware, public SimulationMember, public TraceValueRegister
         void doShift(void);
 
         /*! Interface for HasPinNotifyFunction */
-        void PinStateHasChanged(Pin*);
+        void PinStateHasChanged(Pin*) override;
 
         /*! flag for save, which output state is to change */
         bool is_DI_change;
@@ -150,13 +150,13 @@ class HWUSI: public Hardware, public SimulationMember, public TraceValueRegister
         virtual ~HWUSI() {}
 
         /* Interface from Hardware */
-        virtual void Reset();
+        void Reset() override;
 
         /* Interface from TimerEventListener */
-        virtual void fireEvent(int event);
+        void fireEvent(int event) override;
 
         /* Interface from SimulationMember: for reacting to port pin changes */
-        int Step(bool &untilCoreStepFinished, SystemClockOffset *nextStepIn_ns = 0);
+        int Step(bool &untilCoreStepFinished, SystemClockOffset *nextStepIn_ns = 0) override;
 
         /* Set and get functions for IO registers */
         void SetUSIDR(unsigned char val);
@@ -180,7 +180,7 @@ class HWUSI_BR: public HWUSI {
 
     protected:
         /*! interface to store data to buffer register */
-        virtual void setDataBuffer(unsigned char data);
+        void setDataBuffer(unsigned char data) override;
 
     public:
         /* Constructor */
@@ -193,7 +193,7 @@ class HWUSI_BR: public HWUSI {
                  unsigned int irq_ovr);
 
         /* Interface from Hardware */
-        virtual void Reset();
+        void Reset() override;
 
         /* Set and get functions for IO registers */
         void SetUSIBR(unsigned char val); // produce warning: read only

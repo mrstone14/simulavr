@@ -60,7 +60,7 @@ class PrescalerMultiplexerExt: public PrescalerMultiplexer {
     public:
         //! Creates a multiplexer instance with a count input pin, connected with prescaler
         PrescalerMultiplexerExt(HWPrescaler *ps, PinAtPort pi);
-        virtual bool isClock(unsigned int cs);
+        bool isClock(unsigned int cs) override;
     
 };
 
@@ -71,7 +71,7 @@ class PrescalerMultiplexerT15: public PrescalerMultiplexer {
     public:
         //! Creates a multiplexer instance for timer 1 on ATTiny15, connected with prescaler
         PrescalerMultiplexerT15(HWPrescaler *ps);
-        virtual bool isClock(unsigned int cs);
+        bool isClock(unsigned int cs) override;
     
 };
 

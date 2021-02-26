@@ -164,7 +164,7 @@ class AvrDevice: public SimulationMember, public TraceValueRegister {
         /*! Steps the AVR core.
           \param untilCoreStepFinished iff true, steps a core step and not a
           single clock cycle. */
-        int Step(bool &untilCoreStepFinished, SystemClockOffset *nextStepIn_ns =0);
+        int Step(bool &untilCoreStepFinished, SystemClockOffset *nextStepIn_ns =0) override;
         void Reset();
         void SetClockFreq(SystemClockOffset f);
         SystemClockOffset GetClockFreq() const;

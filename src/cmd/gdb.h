@@ -103,12 +103,12 @@ class GdbServerSocketUnix: public GdbServerSocket {
     public:
         GdbServerSocketUnix(int port);
         ~GdbServerSocketUnix();
-        virtual void Close(void);
-        virtual int ReadByte(void);
-        virtual void Write(const void* buf, size_t count);
-        virtual void SetBlockingMode(int mode);
-        virtual bool Connect(void);
-        virtual void CloseConnection(void);
+        void Close() override;
+        int ReadByte() override;
+        void Write(const void* buf, size_t count) override;
+        void SetBlockingMode(int mode) override;
+        bool Connect() override;
+        void CloseConnection() override;
 };
 
 #endif
@@ -174,7 +174,7 @@ class GdbServer: public SimulationMember {
         void IdleStep();
 
     public:
-        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) ;
+        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) override;
         int InternalStep(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) ;
         void TryConnectGdb();
         void SendPosition(int signal); //send gdb the actual position where the simulation is stopped

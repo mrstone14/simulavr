@@ -95,7 +95,7 @@ class Lcd : public SimulationMember {
         bool firstFunctionSetCommandReceived; //!< init sequence may have multiple SetFunctionMode commands, first takes longer
 
     public:
-        virtual int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0);
+        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) override;
         Lcd(UserInterface *ui, const char *name, const char *baseWindow);
         virtual ~Lcd();
         Pin *GetPin(const char *name);

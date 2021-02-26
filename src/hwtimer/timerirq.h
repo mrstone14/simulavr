@@ -77,11 +77,11 @@ class TimerIRQRegister: public Hardware, public IOSpecialRegClient, public Trace
         IRQLine* getLine(const std::string& name);
         void fireInterrupt(int irqvector);
         
-        virtual void ClearIrqFlag(unsigned int vector);
-        virtual void Reset(void);
+        void ClearIrqFlag(unsigned int vector) override;
+        void Reset() override;
         
-        virtual unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv);
-        virtual unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v);
+        unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv) override;
+        unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v) override;
 };
 
 #endif // TIMERIRQ

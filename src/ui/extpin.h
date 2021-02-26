@@ -50,13 +50,13 @@ class ExtPin: public Pin, public ExternalType {
         
         /*! Receives a external value from UI
           @param s value string */
-        void SetNewValueFromUi(const std::string& s);
+        void SetNewValueFromUi(const std::string& s) override;
         
         //Pin &operator= (unsigned char);
 
         /*! Send new pin status to UI
           @param p pin, for which status change is to send */
-        void SetInState(const Pin& p);
+        void SetInState(const Pin& p) override;
 };
 
 /*! "external" analog pin, used for connecting UI to pins */
@@ -76,13 +76,13 @@ class ExtAnalogPin: public Pin, public ExternalType {
 
         /*! Receives a external value from UI
           @param s value string */
-        void SetNewValueFromUi(const std::string &);
+        void SetNewValueFromUi(const std::string &) override;
 
         //Pin &operator= (unsigned char);
 
         /*! Send new pin status to UI
           @param p pin, for which status change is to send */
-        void SetInState(const Pin& p);
+        void SetInState(const Pin& p) override;
 };
 
 
@@ -102,11 +102,11 @@ class ExtPinButton: public Pin, public ExternalType {
         
         /*! Receives a external value from UI
           @param s value string */
-        void SetNewValueFromUi(const std::string& s);
+        void SetNewValueFromUi(const std::string& s) override;
         
         /*! Send new pin status to UI
           @param p pin, for which status change is to send */
-        void SetInState(const Pin& p);
+        void SetInState(const Pin& p) override;
 };
 
 #endif // EXTPIN

@@ -44,12 +44,12 @@ class HWWado: public Hardware, public TraceValueRegister {
 
 	public:
 		HWWado(AvrDevice *); // { irqSystem= s;}
-		virtual unsigned int CpuCycle();
+		unsigned int CpuCycle() override;
 
 		void SetWdtcr(unsigned char val);  
 		unsigned char GetWdtcr() { return wdtcr; }
 		void Wdr(); //reset the wado counter
-		void Reset();
+		void Reset() override;
 
         IOReg<HWWado> wdtcr_reg;
 };

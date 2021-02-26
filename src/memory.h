@@ -95,7 +95,7 @@ class Data : public Memory {
     public:
         /*! Creates the data memory block */
         Data(): Memory(0) {}
-        void WriteMem(const unsigned char*, unsigned int offset, unsigned int size) {}
+        void WriteMem(const unsigned char*, unsigned int offset, unsigned int size) override {}
 };
 
 #endif

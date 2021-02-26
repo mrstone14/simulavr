@@ -53,7 +53,7 @@ class HWARefPin: public HWARef {
     public:
         HWARefPin(AvrDevice *_core);
 
-        virtual float GetRefValue(int select, float vcc);
+        float GetRefValue(int select, float vcc) override;
 };
 
 //! ADC reference is selected on 3 or 4 different sources: Vcc, aref pin, bandgap or 2.56V reference
@@ -71,7 +71,7 @@ class HWARef4: public HWARefPin {
 
         HWARef4(AvrDevice *_core, int _type);
 
-        virtual float GetRefValue(int select, float vcc);
+        float GetRefValue(int select, float vcc) override;
 };
 
 //! ADC reference is selected on 4 diff. sources: Vcc, aref pin, bandgap or 2.56V reference
@@ -83,7 +83,7 @@ class HWARef8: public HWARef {
     public:
         HWARef8(AvrDevice *_core, Pin* _refpin): HWARef(_core), aref_pin(_refpin) { }
 
-        virtual float GetRefValue(int select, float vcc);
+        float GetRefValue(int select, float vcc) override;
 };
 
 /** ADC multiplexer base class */
@@ -110,7 +110,7 @@ class HWAdmux: public HasPinNotifyFunction {
         virtual float GetValueAComp(int select, float vcc) { return 0.0; }
         virtual bool IsDifferenceChannel(int select) { return false; }
         void SetMuxSelect(int select);
-        void PinStateHasChanged(Pin*);
+        void PinStateHasChanged(Pin*) override;
         void RegisterNotifyClient(AnalogSignalChange *client) { notifyClient = client; }
         void UnregisterNotifyClient(void) { notifyClient = 0; }
 };
@@ -125,7 +125,7 @@ class HWAdmux6: public HWAdmux {
                                Pin*  _ad4,
                                Pin*  _ad5);
 
-        virtual float GetValue(int select, float vcc);
+        float GetValue(int select, float vcc) override;
 };
 
 class HWAdmuxM8: public HWAdmux {
@@ -145,8 +145,8 @@ class HWAdmuxM8: public HWAdmux {
                                 Pin*  _ad5,
                                 Pin*  _ad6,
                                 Pin*  _ad7);
-        virtual float GetValue(int select, float vcc);
-        virtual float GetValueAComp(int select, float vcc);
+        float GetValue(int select, float vcc) override;
+        float GetValueAComp(int select, float vcc) override;
 };
 
 class HWAdmuxM16: public HWAdmuxM8 {
@@ -161,8 +161,8 @@ class HWAdmuxM16: public HWAdmuxM8 {
                                  Pin*  _ad6,
                                  Pin*  _ad7);
 
-        virtual float GetValue(int select, float vcc);
-        virtual bool IsDifferenceChannel(int select);
+        float GetValue(int select, float vcc) override;
+        bool IsDifferenceChannel(int select) override;
 };
 
 class HWAdmuxT25: public HWAdmuxM8 {
@@ -173,8 +173,8 @@ class HWAdmuxT25: public HWAdmuxM8 {
                                  Pin*  _ad2,
                                  Pin*  _ad3);
 
-        virtual float GetValue(int select, float vcc);
-        virtual bool IsDifferenceChannel(int select);
+        float GetValue(int select, float vcc) override;
+        bool IsDifferenceChannel(int select) override;
 };
 
 class HWAdmuxM2560: public HWAdmux {
@@ -197,7 +197,7 @@ class HWAdmuxM2560: public HWAdmux {
                                    Pin*  _ad14,
                                    Pin*  _ad15);
 
-        virtual float GetValue(int select, float vcc);
+        float GetValue(int select, float vcc) override;
 };
 
 /** Analog-digital converter (ADC) */
@@ -275,7 +275,7 @@ class HWAd: public Hardware, public TraceValueRegister, public AnalogSignalChang
         HWAd(AvrDevice *c, int _typ, HWIrqSystem *i, unsigned int iv, HWAdmux *a, HWARef *r);
         virtual ~HWAd() { mux->UnregisterNotifyClient(); }
 
-        unsigned int CpuCycle();
+        unsigned int CpuCycle() override;
 
         unsigned char GetAdch(void);
         unsigned char GetAdcl(void);
@@ -285,11 +285,11 @@ class HWAd: public Hardware, public TraceValueRegister, public AnalogSignalChang
         void SetAdcsrA(unsigned char);
         void SetAdcsrB(unsigned char);
         void SetAdmux(unsigned char val);
-        void Reset(void);
-        void ClearIrqFlag(unsigned int vec);
+        void Reset() override;
+        void ClearIrqFlag(unsigned int vec) override;
 
         // interface for notify signal change in multiplexer
-        void NotifySignalChanged(void);
+        void NotifySignalChanged() override;
 
         // interface for analog comparator
         //! Check, if ADC is enabled
@@ -314,12 +314,12 @@ class HWAd_SFIOR: public HWAd, public IOSpecialRegClient {
     public:
         HWAd_SFIOR(AvrDevice *c, int _typ, HWIrqSystem *i, unsigned int iv, HWAdmux *a, HWARef *r, IOSpecialReg *s);
 
-        void Reset(void) { HWAd::Reset(); adts = 0; }
+        void Reset() override { HWAd::Reset(); adts = 0; }
 
-        unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv);
-        unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v) { return v; }
+        unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv) override;
+        unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v) override { return v; }
 
-        virtual int GetTriggerSource(void) { return adts; }
+        int GetTriggerSource() override { return adts; }
 };
 
 #endif

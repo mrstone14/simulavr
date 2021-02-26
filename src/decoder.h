@@ -85,9 +85,9 @@ class avr_op_ADC: public DecodedInstruction {
 
     public:
         avr_op_ADC(word opcode, AvrDevice *c);
-        virtual unsigned char GetModifiedR() const;
-        int operator()();
-        int Trace(); 
+        unsigned char GetModifiedR() const override;
+        int operator()() override;
+        int Trace() override; 
 }; //end of class 
 
 class avr_op_ADD: public DecodedInstruction {
@@ -107,9 +107,9 @@ class avr_op_ADD: public DecodedInstruction {
 
     public:
         avr_op_ADD(word opcode, AvrDevice *c); 
-        virtual unsigned char GetModifiedR() const;
-        int operator()();
-        int Trace(); 
+        unsigned char GetModifiedR() const override;
+        int operator()() override;
+        int Trace() override; 
 }; //end of class 
 
 
@@ -135,10 +135,10 @@ class avr_op_ADIW: public DecodedInstruction
 
     public:
         avr_op_ADIW(word opcode, AvrDevice *c);
-        virtual unsigned char GetModifiedR() const;
-        virtual unsigned char GetModifiedRHi() const;
-        int operator()();
-        int Trace();
+        unsigned char GetModifiedR() const override;
+        unsigned char GetModifiedRHi() const override;
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_AND: public DecodedInstruction
@@ -160,8 +160,8 @@ class avr_op_AND: public DecodedInstruction
 
     public:
         avr_op_AND(word opcode, AvrDevice *c); 
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ANDI: public DecodedInstruction
@@ -183,8 +183,8 @@ class avr_op_ANDI: public DecodedInstruction
 
     public:
         avr_op_ANDI(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ASR:public DecodedInstruction
@@ -205,8 +205,8 @@ class avr_op_ASR:public DecodedInstruction
 
     public:
         avr_op_ASR(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_BCLR: public DecodedInstruction
@@ -227,8 +227,8 @@ class avr_op_BCLR: public DecodedInstruction
 
     public:
         avr_op_BCLR(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 
@@ -250,8 +250,8 @@ class avr_op_BLD: public DecodedInstruction
 
     public:
         avr_op_BLD(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_BRBC: public DecodedInstruction
@@ -278,8 +278,8 @@ class avr_op_BRBC: public DecodedInstruction
 
     public:
         avr_op_BRBC(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_BRBS: public DecodedInstruction
@@ -306,8 +306,8 @@ class avr_op_BRBS: public DecodedInstruction
 
     public:
         avr_op_BRBS(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_BSET: public DecodedInstruction
@@ -328,8 +328,8 @@ class avr_op_BSET: public DecodedInstruction
 
     public:
         avr_op_BSET(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_BST: public DecodedInstruction
@@ -351,8 +351,8 @@ class avr_op_BST: public DecodedInstruction
 
     public:
         avr_op_BST(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 
 };
 
@@ -373,8 +373,8 @@ class avr_op_CALL: public DecodedInstruction
 
     public:
         avr_op_CALL(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_CBI: public DecodedInstruction
@@ -396,8 +396,8 @@ class avr_op_CBI: public DecodedInstruction
 
     public:
         avr_op_CBI(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_COM: public DecodedInstruction
@@ -418,8 +418,8 @@ class avr_op_COM: public DecodedInstruction
 
     public:
         avr_op_COM(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_CP: public DecodedInstruction
@@ -441,8 +441,8 @@ class avr_op_CP: public DecodedInstruction
 
     public:
         avr_op_CP(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_CPC: public DecodedInstruction
@@ -464,8 +464,8 @@ class avr_op_CPC: public DecodedInstruction
 
     public:
         avr_op_CPC(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_CPI: public DecodedInstruction
@@ -487,8 +487,8 @@ class avr_op_CPI: public DecodedInstruction
 
     public:
         avr_op_CPI(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 
 };
 
@@ -511,8 +511,8 @@ class avr_op_CPSE: public DecodedInstruction
 
     public:
         avr_op_CPSE(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_DEC: public DecodedInstruction
@@ -533,8 +533,8 @@ class avr_op_DEC: public DecodedInstruction
 
     public:
         avr_op_DEC(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_EICALL: public DecodedInstruction
@@ -551,8 +551,8 @@ class avr_op_EICALL: public DecodedInstruction
 
     public:
         avr_op_EICALL(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_EIJMP: public DecodedInstruction
@@ -569,8 +569,8 @@ class avr_op_EIJMP: public DecodedInstruction
 
     public:
         avr_op_EIJMP(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ELPM_Z: public DecodedInstruction
@@ -590,8 +590,8 @@ class avr_op_ELPM_Z: public DecodedInstruction
 
     public:
         avr_op_ELPM_Z(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ELPM_Z_incr: public DecodedInstruction
@@ -611,8 +611,8 @@ class avr_op_ELPM_Z_incr: public DecodedInstruction
 
     public:
         avr_op_ELPM_Z_incr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ELPM: public DecodedInstruction
@@ -630,8 +630,8 @@ class avr_op_ELPM: public DecodedInstruction
 
     public:
         avr_op_ELPM(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_EOR: public DecodedInstruction
@@ -653,8 +653,8 @@ class avr_op_EOR: public DecodedInstruction
 
     public:
         avr_op_EOR(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ESPM: public DecodedInstruction
@@ -672,8 +672,8 @@ class avr_op_ESPM: public DecodedInstruction
 
     public:
         avr_op_ESPM(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_FMUL:public DecodedInstruction
@@ -695,8 +695,8 @@ class avr_op_FMUL:public DecodedInstruction
 
     public:
         avr_op_FMUL(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_FMULS: public DecodedInstruction
@@ -718,8 +718,8 @@ class avr_op_FMULS: public DecodedInstruction
 
     public:
         avr_op_FMULS(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_FMULSU: public DecodedInstruction
@@ -741,8 +741,8 @@ class avr_op_FMULSU: public DecodedInstruction
 
     public:
         avr_op_FMULSU(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ICALL: public DecodedInstruction
@@ -759,8 +759,8 @@ class avr_op_ICALL: public DecodedInstruction
 
     public:
         avr_op_ICALL(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_IJMP: public DecodedInstruction
@@ -777,8 +777,8 @@ class avr_op_IJMP: public DecodedInstruction
 
     public:
         avr_op_IJMP (word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_IN: public DecodedInstruction
@@ -799,8 +799,8 @@ class avr_op_IN: public DecodedInstruction
 
     public:
         avr_op_IN(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_INC: public DecodedInstruction
@@ -821,8 +821,8 @@ class avr_op_INC: public DecodedInstruction
 
     public:
         avr_op_INC(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_JMP: public DecodedInstruction
@@ -842,8 +842,8 @@ class avr_op_JMP: public DecodedInstruction
 
     public:
         avr_op_JMP (word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LDD_Y: public DecodedInstruction
@@ -864,8 +864,8 @@ class avr_op_LDD_Y: public DecodedInstruction
 
     public:
         avr_op_LDD_Y(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LDD_Z: public DecodedInstruction
@@ -886,8 +886,8 @@ class avr_op_LDD_Z: public DecodedInstruction
 
     public:
         avr_op_LDD_Z(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LDI: public DecodedInstruction
@@ -908,9 +908,9 @@ class avr_op_LDI: public DecodedInstruction
 
     public:
         avr_op_LDI(word opcode, AvrDevice *c);
-        virtual unsigned char GetModifiedR() const;
-        int operator()();
-        int Trace();
+        unsigned char GetModifiedR() const override;
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LDS: public DecodedInstruction
@@ -930,8 +930,8 @@ class avr_op_LDS: public DecodedInstruction
 
     public:
         avr_op_LDS(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LD_X: public DecodedInstruction
@@ -951,8 +951,8 @@ class avr_op_LD_X: public DecodedInstruction
 
     public:
         avr_op_LD_X(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LD_X_decr: public DecodedInstruction
@@ -972,8 +972,8 @@ class avr_op_LD_X_decr: public DecodedInstruction
 
     public:
         avr_op_LD_X_decr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LD_X_incr: public DecodedInstruction
@@ -993,8 +993,8 @@ class avr_op_LD_X_incr: public DecodedInstruction
 
     public:
         avr_op_LD_X_incr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LD_Y_decr: public DecodedInstruction
@@ -1015,8 +1015,8 @@ class avr_op_LD_Y_decr: public DecodedInstruction
 
     public:
         avr_op_LD_Y_decr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LD_Y_incr: public DecodedInstruction
@@ -1036,8 +1036,8 @@ class avr_op_LD_Y_incr: public DecodedInstruction
 
     public:
         avr_op_LD_Y_incr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LD_Z_incr: public DecodedInstruction
@@ -1057,8 +1057,8 @@ class avr_op_LD_Z_incr: public DecodedInstruction
 
     public:
         avr_op_LD_Z_incr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LD_Z_decr: public DecodedInstruction
@@ -1078,8 +1078,8 @@ class avr_op_LD_Z_decr: public DecodedInstruction
 
     public:
         avr_op_LD_Z_decr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LPM_Z: public DecodedInstruction
@@ -1099,8 +1099,8 @@ class avr_op_LPM_Z: public DecodedInstruction
 
     public:
         avr_op_LPM_Z(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LPM: public DecodedInstruction
@@ -1119,8 +1119,8 @@ class avr_op_LPM: public DecodedInstruction
 
     public:
         avr_op_LPM(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LPM_Z_incr: public DecodedInstruction
@@ -1140,8 +1140,8 @@ class avr_op_LPM_Z_incr: public DecodedInstruction
 
     public:
         avr_op_LPM_Z_incr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_LSR: public DecodedInstruction
@@ -1162,8 +1162,8 @@ class avr_op_LSR: public DecodedInstruction
 
     public:
         avr_op_LSR(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_MOV: public DecodedInstruction
@@ -1183,8 +1183,8 @@ class avr_op_MOV: public DecodedInstruction
 
     public:
         avr_op_MOV(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_MOVW: public DecodedInstruction
@@ -1205,8 +1205,8 @@ class avr_op_MOVW: public DecodedInstruction
 
     public:
         avr_op_MOVW(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_MUL: public DecodedInstruction
@@ -1228,8 +1228,8 @@ class avr_op_MUL: public DecodedInstruction
 
     public:
         avr_op_MUL(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_MULS: public DecodedInstruction
@@ -1251,8 +1251,8 @@ class avr_op_MULS: public DecodedInstruction
 
     public:
         avr_op_MULS(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_MULSU: public DecodedInstruction
@@ -1277,8 +1277,8 @@ class avr_op_MULSU: public DecodedInstruction
 
     public:
         avr_op_MULSU(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_NEG: public DecodedInstruction
@@ -1299,8 +1299,8 @@ class avr_op_NEG: public DecodedInstruction
 
     public:
         avr_op_NEG(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_NOP: public DecodedInstruction
@@ -1318,8 +1318,8 @@ class avr_op_NOP: public DecodedInstruction
 
     public:
         avr_op_NOP(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_OR:public DecodedInstruction
@@ -1341,8 +1341,8 @@ class avr_op_OR:public DecodedInstruction
 
     public:
         avr_op_OR(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ORI: public DecodedInstruction
@@ -1364,8 +1364,8 @@ class avr_op_ORI: public DecodedInstruction
 
     public:
         avr_op_ORI(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_OUT: public DecodedInstruction
@@ -1386,8 +1386,8 @@ class avr_op_OUT: public DecodedInstruction
 
     public:
         avr_op_OUT(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 
     friend class AvrFlash;  // AvrFlash::LooksLikeContextSwitch() needs to read ioreg
 };
@@ -1409,8 +1409,8 @@ class avr_op_POP: public DecodedInstruction
 
     public:
         avr_op_POP(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_PUSH: public DecodedInstruction
@@ -1430,8 +1430,8 @@ class avr_op_PUSH: public DecodedInstruction
 
     public:
         avr_op_PUSH(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_RCALL: public DecodedInstruction
@@ -1451,8 +1451,8 @@ class avr_op_RCALL: public DecodedInstruction
 
     public:
         avr_op_RCALL(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_RET: public DecodedInstruction
@@ -1469,8 +1469,8 @@ class avr_op_RET: public DecodedInstruction
 
     public:
         avr_op_RET(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_RETI: public DecodedInstruction
@@ -1490,8 +1490,8 @@ class avr_op_RETI: public DecodedInstruction
 
     public:
         avr_op_RETI(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_RJMP: public DecodedInstruction
@@ -1511,8 +1511,8 @@ class avr_op_RJMP: public DecodedInstruction
 
     public:
         avr_op_RJMP(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ROR: public DecodedInstruction
@@ -1533,8 +1533,8 @@ class avr_op_ROR: public DecodedInstruction
 
     public:
         avr_op_ROR(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SBC: public DecodedInstruction
@@ -1556,9 +1556,9 @@ class avr_op_SBC: public DecodedInstruction
 
     public:
         avr_op_SBC(word opcode, AvrDevice *c);
-        virtual unsigned char GetModifiedR() const;
-        int operator()();
-        int Trace();
+        unsigned char GetModifiedR() const override;
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SBCI: public DecodedInstruction
@@ -1580,9 +1580,9 @@ class avr_op_SBCI: public DecodedInstruction
 
     public:
         avr_op_SBCI(word opcode, AvrDevice *c);
-        virtual unsigned char GetModifiedR() const;
-        int operator()();
-        int Trace();
+        unsigned char GetModifiedR() const override;
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SBI: public DecodedInstruction
@@ -1603,8 +1603,8 @@ class avr_op_SBI: public DecodedInstruction
 
     public:
         avr_op_SBI(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SBIC: public DecodedInstruction
@@ -1625,8 +1625,8 @@ class avr_op_SBIC: public DecodedInstruction
 
     public:
         avr_op_SBIC(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SBIS: public DecodedInstruction
@@ -1647,8 +1647,8 @@ class avr_op_SBIS: public DecodedInstruction
 
     public:
         avr_op_SBIS(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SBIW: public DecodedInstruction
@@ -1670,10 +1670,10 @@ class avr_op_SBIW: public DecodedInstruction
 
     public:
         avr_op_SBIW(word opcode, AvrDevice *c);
-        virtual unsigned char GetModifiedR() const;
-        virtual unsigned char GetModifiedRHi() const;
-        int operator()();
-        int Trace();
+        unsigned char GetModifiedR() const override ;
+        unsigned char GetModifiedRHi() const override;
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SBRC: public DecodedInstruction
@@ -1694,8 +1694,8 @@ class avr_op_SBRC: public DecodedInstruction
 
     public:
         avr_op_SBRC(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SBRS: public DecodedInstruction
@@ -1716,8 +1716,8 @@ class avr_op_SBRS: public DecodedInstruction
 
     public:
         avr_op_SBRS(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 /*! \todo SLEEP instruction not implemented */
@@ -1738,8 +1738,8 @@ class avr_op_SLEEP: public DecodedInstruction
 
     public:
         avr_op_SLEEP(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SPM: public DecodedInstruction
@@ -1756,8 +1756,8 @@ class avr_op_SPM: public DecodedInstruction
 
     public:
         avr_op_SPM(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_STD_Y: public DecodedInstruction
@@ -1778,8 +1778,8 @@ class avr_op_STD_Y: public DecodedInstruction
 
     public:
         avr_op_STD_Y(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_STD_Z: public DecodedInstruction
@@ -1800,8 +1800,8 @@ class avr_op_STD_Z: public DecodedInstruction
 
     public:
         avr_op_STD_Z(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_STS: public DecodedInstruction
@@ -1821,8 +1821,8 @@ class avr_op_STS: public DecodedInstruction
 
     public:
         avr_op_STS(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ST_X: public DecodedInstruction
@@ -1842,8 +1842,8 @@ class avr_op_ST_X: public DecodedInstruction
 
     public:
         avr_op_ST_X(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ST_X_decr: public DecodedInstruction
@@ -1863,8 +1863,8 @@ class avr_op_ST_X_decr: public DecodedInstruction
 
     public:
         avr_op_ST_X_decr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ST_X_incr: public DecodedInstruction
@@ -1884,8 +1884,8 @@ class avr_op_ST_X_incr: public DecodedInstruction
 
     public:
         avr_op_ST_X_incr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ST_Y_decr: public DecodedInstruction
@@ -1905,8 +1905,8 @@ class avr_op_ST_Y_decr: public DecodedInstruction
 
     public:
         avr_op_ST_Y_decr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ST_Y_incr: public DecodedInstruction
@@ -1926,8 +1926,8 @@ class avr_op_ST_Y_incr: public DecodedInstruction
 
     public:
         avr_op_ST_Y_incr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ST_Z_decr: public DecodedInstruction
@@ -1947,8 +1947,8 @@ class avr_op_ST_Z_decr: public DecodedInstruction
 
     public:
         avr_op_ST_Z_decr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ST_Z_incr: public DecodedInstruction
@@ -1968,8 +1968,8 @@ class avr_op_ST_Z_incr: public DecodedInstruction
 
     public:
         avr_op_ST_Z_incr(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SUB: public DecodedInstruction
@@ -1991,9 +1991,9 @@ class avr_op_SUB: public DecodedInstruction
 
     public:
         avr_op_SUB(word opcode, AvrDevice *c);
-        virtual unsigned char GetModifiedR() const;
-        int operator()();
-        int Trace();
+        unsigned char GetModifiedR() const override;
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SUBI: public DecodedInstruction
@@ -2015,9 +2015,9 @@ class avr_op_SUBI: public DecodedInstruction
 
     public:
         avr_op_SUBI(word opcode, AvrDevice *c);
-        virtual unsigned char GetModifiedR() const;
-        int operator()();
-        int Trace();
+        unsigned char GetModifiedR() const override;
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_SWAP: public DecodedInstruction
@@ -2037,8 +2037,8 @@ class avr_op_SWAP: public DecodedInstruction
 
     public:
         avr_op_SWAP(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_WDR: public DecodedInstruction
@@ -2057,8 +2057,8 @@ class avr_op_WDR: public DecodedInstruction
 
     public:
         avr_op_WDR(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_BREAK: public DecodedInstruction
@@ -2077,8 +2077,8 @@ class avr_op_BREAK: public DecodedInstruction
 
     public:
         avr_op_BREAK(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 class avr_op_ILLEGAL: public DecodedInstruction
@@ -2087,8 +2087,8 @@ class avr_op_ILLEGAL: public DecodedInstruction
 
     public:
         avr_op_ILLEGAL(word opcode, AvrDevice *c);
-        int operator()();
-        int Trace();
+        int operator()() override;
+        int Trace() override;
 };
 
 #endif

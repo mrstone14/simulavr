@@ -124,11 +124,11 @@ class GPIORegister: public RWMemoryMember, public Hardware {
     { value = 0; }
 
         // from Hardware
-        void Reset(void) { value = 0; }
+        void Reset() override { value = 0; }
 
     protected:
-        unsigned char get() const { return value; }
-        void set(unsigned char v) { value = v; }
+        unsigned char get() const override { return value; }
+        void set(unsigned char v) override { value = v; }
 
     private:
         unsigned char value;
@@ -142,12 +142,12 @@ class CLKPRRegister: public RWMemoryMember, public Hardware {
                       TraceValueRegister *registry);
 
         // from Hardware
-        void Reset(void);
-        unsigned int CpuCycle(void);
+        void Reset() override ;
+        unsigned int CpuCycle() override;
 
     protected:
-        unsigned char get() const { return value; }
-        void set(unsigned char v);
+        unsigned char get() const override { return value; }
+        void set(unsigned char v) override;
 
     private:
         AvrDevice *_core;
@@ -163,11 +163,11 @@ class XDIVRegister: public RWMemoryMember, public Hardware {
                      TraceValueRegister *registry);
 
         // from Hardware
-        void Reset(void) { value = 0; }
+        void Reset() override { value = 0; }
 
     protected:
-        unsigned char get() const { return value; }
-        void set(unsigned char v);
+        unsigned char get() const override { return value; }
+        void set(unsigned char v) override;
 
     private:
         unsigned char value;
@@ -189,11 +189,11 @@ class OSCCALRegister: public RWMemoryMember, public Hardware {
                        int cal);
 
         // from Hardware
-        void Reset(void);
+        void Reset() override;
 
     protected:
-        unsigned char get() const { return value; }
-        void set(unsigned char v);
+        unsigned char get() const override { return value; }
+        void set(unsigned char v) override;
 
     private:
         unsigned char value;
@@ -213,8 +213,8 @@ class RAM : public RWMemoryMember {
             const size_t maxsize);
 
     protected:
-        unsigned char get() const;
-        void set(unsigned char);
+        unsigned char get() const override;
+        void set(unsigned char) override;
 
     private:
         AvrDevice* core;
@@ -234,8 +234,8 @@ class InvalidMem : public RWMemoryMember {
         InvalidMem(AvrDevice *core, int addr);
 
     protected:
-        unsigned char get() const;
-        void set(unsigned char);
+        unsigned char get() const override;
+        void set(unsigned char) override;
 };
 
 //! An IO register which is not simulated because programmers are lazy.
@@ -248,8 +248,8 @@ class NotSimulatedRegister : public RWMemoryMember {
         NotSimulatedRegister(const char * message_on_access);
 
     protected:
-        unsigned char get() const;
-        void set(unsigned char);
+        unsigned char get() const override;
+        void set(unsigned char) override;
 };
 
 //! IO register to be specialized for a certain class/hardware
@@ -331,7 +331,8 @@ class IOReg: public RWMemoryMember {
         }
 
     protected:
-        unsigned char get() const {
+        unsigned char get() const override 
+        {
             unsigned char val = 0x00;
 
             if (getValueFuncPtr)
@@ -351,7 +352,8 @@ class IOReg: public RWMemoryMember {
             return val;
         }
 
-        void set(unsigned char val) {
+        void set(unsigned char val) override
+        {
             if ( IsTraceOn( core ) )
             {
                 traceOut << tracename << "=" << HexChar(val) << " ";
@@ -439,8 +441,8 @@ class IOSpecialReg: public RWMemoryMember {
     protected:
         std::vector<IOSpecialRegClient*> clients; //!< clients-list with registered clients
 
-        unsigned char get() const; //!< Get value method, see RWMemoryMember
-        void set(unsigned char);   //!< Set value method, see RWMemoryMember
+        unsigned char get() const override; //!< Get value method, see RWMemoryMember
+        void set(unsigned char) override;   //!< Set value method, see RWMemoryMember
 
     private:
         unsigned char value; //!< Internal register value

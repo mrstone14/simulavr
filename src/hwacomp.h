@@ -61,8 +61,8 @@ class HWAcomp: public Hardware,
         HWAd *ad;               //!< connection to ADC for analog input mux. NULL, if not available
         IOSpecialReg *sfior;    //!< connection to SFIOR register, if necessary. NULL, if not used
 
-        unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv);
-        unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v) { return v; }
+        unsigned char set_from_reg(const IOSpecialReg* reg, unsigned char nv) override;
+        unsigned char get_from_client(const IOSpecialReg* reg, unsigned char v) override { return v; }
 
         //! Check, if ACME flag is set (from ADC or SFIOR register)
         bool isSetACME(void);
@@ -99,19 +99,19 @@ class HWAcomp: public Hardware,
         //! Set method for ACSR register
         void SetAcsr(unsigned char val);
         //! Reset the unit
-        void Reset();
+        void Reset() override;
         //! Reflect irq processing, reset interrupt source
-        void ClearIrqFlag(unsigned int vec);
+        void ClearIrqFlag(unsigned int vec) override;
         //! Get informed about input pin change
-        void PinStateHasChanged(Pin *);
+        void PinStateHasChanged(Pin *) override;
         //! Get analog value for comparator input 0
-        float GetIn0(void);
+        float GetIn0();
         //! Get analog value for comparator input 1
-        float GetIn1(void);
+        float GetIn1();
         //! Return last state of analog comparator (assume, that this is correct, if unit is disabled)
-        bool GetACO(void) { return ((acsr & ACO) == ACO); }
+        bool GetACO() { return ((acsr & ACO) == ACO); }
         // Interface for notify signal change in ADC multiplexer
-        void NotifySignalChanged(void);
+        void NotifySignalChanged() override;
 
 };
 

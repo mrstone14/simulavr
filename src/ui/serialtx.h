@@ -58,7 +58,7 @@ class SerialTxBuffered: public SimulationMember {
         void Reset();
         virtual ~SerialTxBuffered(){};
         void SetHexInput(bool newValue);
-        virtual int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0);
+        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) override;
         /// Add byte from UI to be sent to device's UART.
         virtual void Send(unsigned char data);
         virtual void SetBaudRate(SystemClockOffset baud);
@@ -71,7 +71,7 @@ class SerialTx: public SerialTxBuffered, public ExternalType {
     public:
         SerialTx(UserInterface *_ui, const char *_name, const char *baseWindow);
         virtual ~SerialTx(){};
-        virtual void SetNewValueFromUi(const std::string &);
+        void SetNewValueFromUi(const std::string &) override;
  };
 
 #endif

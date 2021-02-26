@@ -18,7 +18,7 @@ class SpiSource : public SimulationMember {
 					Net&		mosiNet
 					) throw();
 	private:	// SimulationMember
-        int	Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0);
+        int	Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) override;
 	};
 
 

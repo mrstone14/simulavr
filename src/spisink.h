@@ -28,7 +28,7 @@ class SpiSink : public SimulationMember {
 					bool		clockSampleOnLeadingEdge = true
 					) throw();
 	private:	// SimulationMember
-        int	Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0);
+        int	Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) override;
 
 	};
 

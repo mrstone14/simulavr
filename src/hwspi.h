@@ -108,8 +108,8 @@ class HWSpi: public Hardware, public TraceValueRegister {
               unsigned int irq_vec,
               bool mega_mode=true);
         
-        unsigned int CpuCycle();
-        void Reset();
+        unsigned int CpuCycle() override;
+        void Reset() override;
     
         void SetSPDR(unsigned char val);
         void SetSPSR(unsigned char val); // it is read only! but we need it for rwmem-> only tell that we have an error 
@@ -119,7 +119,7 @@ class HWSpi: public Hardware, public TraceValueRegister {
         unsigned char GetSPSR();
         unsigned char GetSPCR();
     
-        void ClearIrqFlag(unsigned int);
+        void ClearIrqFlag(unsigned int) override;
     
         IOReg<HWSpi> spdr_reg,
                      spsr_reg,

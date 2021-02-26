@@ -45,9 +45,9 @@ class HWPrescaler: public Hardware, public IOSpecialRegClient {
         unsigned short preScaleValue; //!< prescaler counter value
         bool countEnable;  //!< enables counting of prescaler (for reset sync)
         //! IO register interface set method, see IOSpecialRegClient
-        unsigned char set_from_reg(const IOSpecialReg *reg, unsigned char nv);
+        unsigned char set_from_reg(const IOSpecialReg *reg, unsigned char nv) override;
         //! IO register interface get method, see IOSpecialRegClient
-        unsigned char get_from_client(const IOSpecialReg *reg, unsigned char v) { return v; }
+        unsigned char get_from_client(const IOSpecialReg *reg, unsigned char v) override { return v; }
         
     public:
         //! Creates HWPrescaler instance without reset feature
@@ -64,7 +64,8 @@ class HWPrescaler: public Hardware, public IOSpecialRegClient {
                     int resetBit,
                     int resetSyncBit);
         //! Count functionality for prescaler
-        virtual unsigned int CpuCycle() {
+        unsigned int CpuCycle() override
+        {
             if(countEnable) {
               preScaleValue++;
               if(preScaleValue > 1023) preScaleValue = 0;
@@ -74,7 +75,7 @@ class HWPrescaler: public Hardware, public IOSpecialRegClient {
         //! Get method for current prescaler counter value
         unsigned short GetValue() { return preScaleValue; }
         //! Reset method, sets prescaler counter to 0
-        void Reset(){ preScaleValue = 0; }
+        void Reset() override { preScaleValue = 0; }
 };
 
 //! Extends HWPrescaler with a external clock oszillator pin
@@ -101,11 +102,11 @@ class HWPrescalerAsync: public HWPrescaler {
                          int resetBit,
                          int resetSyncBit);
         //! Count functionality for prescaler
-        virtual unsigned int CpuCycle();
+        unsigned int CpuCycle() override;
         
     protected:
         //! IO register interface set method, see IOSpecialRegClient
-        unsigned char set_from_reg(const IOSpecialReg *reg, unsigned char nv);
+        unsigned char set_from_reg(const IOSpecialReg *reg, unsigned char nv) override;
         
     private:
         IOSpecialReg* asyncRegister; //!< instance of IO register with assr bits

@@ -84,8 +84,8 @@ class FlashProgramming: public Hardware {
         FlashProgramming(AvrDevice *c, unsigned int pgsz, unsigned int nrww, int mode);
         ~FlashProgramming();
         
-        unsigned int CpuCycle();
-        void Reset();
+        unsigned int CpuCycle() override;
+        void Reset() override;
         
         unsigned char LPM_action(unsigned int xaddr, unsigned int addr);
         int SPM_action(unsigned int data, unsigned int xaddr, unsigned int addr);

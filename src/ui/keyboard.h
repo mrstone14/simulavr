@@ -61,8 +61,8 @@ class Keyboard : public SimulationMember, public ExternalType {
         unsigned char lastPortValue;
 
     public:
-        void SetNewValueFromUi(const std::string &);
-        virtual int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0);
+        void SetNewValueFromUi(const std::string &) override;
+        int Step(bool &trueHwStep, SystemClockOffset *timeToNextStepIn_ns=0) override;
         Keyboard(UserInterface *, const char *name, const char *baseWindow);
         void SetClockFreq(SystemClockOffset f);
         virtual ~Keyboard();

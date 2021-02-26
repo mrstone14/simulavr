@@ -218,7 +218,7 @@ class TraceValueOutput: public TraceValue {
         TraceValueOutput(const std::string &_name): TraceValue(1, _name) {}
 
         /*! Give back VCD coding of pin output driver  */
-        virtual char VcdBit(int bitNo) const;
+        char VcdBit(int bitNo) const override;
 
 };
 
@@ -274,8 +274,8 @@ class WarnUnknown : public Dumper {
     
     public:
         WarnUnknown(AvrDevice *core);
-        void markReadUnknown(const TraceValue *t);
-        bool enabled(const TraceValue *t) const;
+        void markReadUnknown(const TraceValue *t) override;
+        bool enabled(const TraceValue *t) const override;
         
     private:
         AvrDevice *core;
@@ -293,29 +293,29 @@ class DumpVCD : public Dumper {
         DumpVCD(const std::string &name, const std::string &tscale = "ns",
             const bool rstrobes = false, const bool wstrobes = false);
         
-        void setActiveSignals(const TraceSet &act);
+        void setActiveSignals(const TraceSet &act) override;
     
         //! Writes header stuff and the initial state
-        void start();
+        void start() override;
     
         //! Writes a last time marker
-        void stop();
+        void stop() override;
     
         //! Writes next clock cycle and resets all RS and WS states
-        void cycle();
+        void cycle() override;
     
         /*! Iff rstrobes is true, this will mark reads on a special
           R-strobe signal line. */
-        void markRead(const TraceValue *t);
+        void markRead(const TraceValue *t) override;
     
         /*! Iff wstrobes is true, this will mark writes on a special
           W-strobe signal line .*/
-        void markWrite(const TraceValue *t);
+        void markWrite(const TraceValue *t) override;
         
         /*! This will produce a change in the value CHANGE dump file :-) */
-        void markChange(const TraceValue *t);
+        void markChange(const TraceValue *t) override;
     
-        bool enabled(const TraceValue *t) const;
+        bool enabled(const TraceValue *t) const override;
         ~DumpVCD();
         
     private:
@@ -515,11 +515,11 @@ class TraceValueCoreRegister: public TraceValueRegister {
     protected:
         //! Get the count of all TraceValues, that are registered here and descending
         /*! This includes here also values in _tvr_valset! */
-        virtual size_t _tvr_getValuesCount(void);
+        size_t _tvr_getValuesCount() override;
         
         //! Insert all TraceValues into TraceSet, that registered here and descending
         /*! This includes here also values in _tvr_valset! */
-        virtual void _tvr_insertTraceValuesToSet(TraceSet &t);
+        void _tvr_insertTraceValuesToSet(TraceSet &t) override;
         
     public:
         //! Create a TraceValueCoreRegister instance
@@ -530,7 +530,7 @@ class TraceValueCoreRegister: public TraceValueRegister {
         //! Registers a TraceValue for this register
         void RegisterTraceSetValue(TraceValue *t, const std::string &name, const size_t size);
         //! Get a here registered TraceValue by it's name
-        virtual TraceValue* GetTraceValueByName(const std::string &name);
+        TraceValue* GetTraceValueByName(const std::string &name) override;
 };
 
 //! Register a directly traced bool value

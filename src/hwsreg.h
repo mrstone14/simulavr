@@ -71,8 +71,8 @@ class RWSreg: public RWMemoryMember {
 
     protected:
         HWSreg *status;
-        unsigned char get() const;
-        void set(unsigned char);
+        unsigned char get() const override;
+        void set(unsigned char) override;
 };
 
 #endif

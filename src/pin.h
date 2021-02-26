@@ -221,13 +221,13 @@ class OpenDrain: public Pin {
     public:
         OpenDrain(Pin *p) { pin=p;}
 #ifndef SWIG
-        virtual operator bool() const;
-        virtual Pin operator+ (const Pin& p);
-        virtual Pin operator+= (const Pin& p);
+        operator bool() const override;
+        Pin operator+ (const Pin& p) override;
+        Pin operator+= (const Pin& p) override;
 #endif
 
-        virtual Pin GetPin();
-        void RegisterNet(Net *n) { pin->RegisterNet(n);}
+        Pin GetPin() override;
+        void RegisterNet(Net *n)  override { pin->RegisterNet(n);}
         virtual ~OpenDrain() {}
 
         /* Spezialfall:
@@ -235,7 +235,7 @@ class OpenDrain: public Pin {
          * ansteuert nur den EIGENEN Pegel. Der Pegel hinter dem OpenDrain hat ja hier keine!
          * Funktion
          */
-        void SetInState ( const Pin &p)
+        void SetInState ( const Pin &p) override
         {
             pin-> SetInState(*pin); //Spiegel wie im Mirror Net
         }
