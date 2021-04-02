@@ -93,5 +93,7 @@ TEST( SESSION_IRQ, TC5)
    EXPECT_EQ( 0x0d, (unsigned char)(*(dev1->rw[addr_of_vector++]))) << "Wrong IRQ Order " << endl;
    EXPECT_EQ( 0x0c, (unsigned char)(*(dev1->rw[addr_of_vector++]))) << "Wrong IRQ Order " << endl;
    EXPECT_EQ( 0x08, (unsigned char)(*(dev1->rw[addr_of_vector++]))) << "Wrong IRQ Order " << endl;
+   EXPECT_EQ( 0x0b, (unsigned char)(*(dev1->rw[addr_of_vector++]))) << "Wrong IRQ Order " << endl;
+   EXPECT_EQ( 0x0a, (unsigned char)(*(dev1->rw[addr_of_vector++]))) << "Wrong IRQ Order " << endl;
 }
 

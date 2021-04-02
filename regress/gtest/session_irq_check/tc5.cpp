@@ -3,7 +3,7 @@
 #include <avr/cpufunc.h>
 
 uint8_t vector[100];
-unsigned int index=0;
+unsigned int idx=0;
 
 extern "C"
 {
@@ -12,7 +12,7 @@ extern "C"
 
 void Record()
 {
-    vector[index++]=PORTC;
+    vector[idx++]=PORTC;
 }
 
 void FireINT0()
@@ -82,25 +82,25 @@ int main()
     _NOP();
     sei();
     cli();  // expect no irq
-    Record();   // index[0] -> 0x0f;
+    Record();   // idx[0] -> 0x0f;
 
     // now we only want to see the first interrupt
     sei(); 
     _NOP(); // exactly the first irq should fire
     cli(); // and nothing more
-    Record(); // index[1] -> 0x0e;
+    Record(); // idx[1] -> 0x0e;
 
     // now again lets fire the next pending irq
     sei();
     _NOP();
     cli();
-    Record();   // index[2] -> 0x0c;
+    Record();   // idx[2] -> 0x0c;
 
     // and now we get the last irq
     sei();
     _NOP();
     cli();
-    Record();   // index[3] -> 0x08;
+    Record();   // idx[3] -> 0x08;
 
     cli();
 
@@ -116,26 +116,26 @@ int main()
     FireINT2(); // lowest order
     sei(); 
     cli(); // nothing should happen
-    Record();   // index[4] -> 0x0f;
+    Record();   // idx[4] -> 0x0f;
 
     // now fire another irq with higher prio 
     FireINT1(); // mid prio
     sei();
     _NOP();
     cli(); 
-    Record(); // index[5] -> 0x0d;
+    Record(); // idx[5] -> 0x0d;
 
     FireINT0();
     sei();
     _NOP();
     cli();
-    Record();   //index[6] -> 0x0c;
+    Record();   //idx[6] -> 0x0c;
 
     // now the pending INT2 should run
     sei();
     _NOP();
     cli();
-    Record();   // index[7] -> 0x08;
+    Record();   // idx[7] -> 0x08;
 
     // now reset the ports
     ResetINT0();
@@ -150,12 +150,18 @@ int main()
     sei(); 
     PORTD|= ( 1 << 2 ); // INT0
     cli();
-    Record(); // index[8] -> 0x0b   // actual not checked WRONG ORDER TODO
+
+    // we expect that we get INT2 served first, because the irq vector
+    // is already fetched and I-flag still allows interrupt handling.
+    // as the last command in pipe enables a higher priority irq
+    // but the lower one is already fetched, we see the lower one first!
+    // this is validated on real m32 hardware
+    Record(); // idx[8] -> 0x0b;
     sei();
     _NOP();
     cli();
 
-    Record(); // index[9] -> 0x0a;  // actual not checked WRONG ORDER TODO
+    Record(); // idx[9] -> 0x0a; and now INT 0
 
     //stopsim();
 }

@@ -73,14 +73,12 @@ unsigned int HWIrqSystem::GetNewPc(unsigned int &actualVector) {
         assert(index < vectorTableSize);
 
         if(second->IsLevelInterrupt(index)) {
-            second->ClearIrqFlag(index);
             if(second->LevelInterruptPending(index)) {
                 actualVector = index;
                 newPC = index * (bytesPerVector / 2);
                 break;
             }
         } else {
-            second->ClearIrqFlag(index);
             actualVector = index;
             newPC = index * (bytesPerVector / 2);
             break;

@@ -310,12 +310,14 @@ int AvrDevice::Step(bool &untilCoreStepFinished, SystemClockOffset *nextStepIn_n
                  */
                 if ( status->I == 1 )
                 {
-                    newIrqPc = irqSystem->GetNewPc(actualIrqVector);
 
                     if ( newIrqPc != 0xffffffff )
                     {
                         if(trace_on)
                             traceOut << "IRQ DETECTED: VectorAddr: " << newIrqPc ;
+
+                        // now we clear the irq flag for the served IRQ
+                        irqSystem->ClearIrqFlag( actualIrqVector );
 
                         irqSystem->IrqHandlerStarted(stack->GetStackPointer(), actualIrqVector);
 
@@ -339,6 +341,7 @@ int AvrDevice::Step(bool &untilCoreStepFinished, SystemClockOffset *nextStepIn_n
                 if ( irqSystem->IsIrqPending() )
                 {
                     deferIrq = true; // do always one instruction before entering irq vect
+                    newIrqPc = irqSystem->GetNewPc(actualIrqVector);
                 }
             }
 
