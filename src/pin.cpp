@@ -172,13 +172,15 @@ Pin::Pin(float analog) {
 }
 
 void Pin::RegisterNet(Net *n) {
-    UnRegisterNet(connectedTo); // unregister old Net instance, if exists
+    if ( connectedTo )
+    {
+        connectedTo->Delete(this);
+    }
+
     connectedTo = n; // register new Net instance
 }
 
 void Pin::UnRegisterNet(Net *n) {
-    if(connectedTo == n && connectedTo != nullptr)
-        connectedTo->Delete(this);
     connectedTo = nullptr;
 }
 
@@ -413,7 +415,7 @@ PortPin::PortPin() {
 
 PortPin::~PortPin() {
     // unregister myself on Net instance
-    UnRegisterNet(connectedTo);
+    connectedTo->Delete(this);
 }
 
 void PortPin::ResetOverride(void) {

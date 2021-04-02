@@ -32,10 +32,11 @@ void Net::Add(Pin *p) {
     CalcNet();
 }
 
+// Remove a Pin from a net but do NOT "delete" it
 void Net::Delete(Pin *p) {
     iterator ii;
     for(ii = begin(); ii != end(); ii++) {
-        if((Pin*)(*ii) == p) {
+        if((*ii) == p) {
             erase(ii);
             break;
         }
@@ -43,8 +44,10 @@ void Net::Delete(Pin *p) {
 }
 
 Net::~Net() {
-    while(begin() != end())
-        (*begin())->UnRegisterNet(this);
+    for( auto& pin: *this)
+    {
+        pin->UnRegisterNet(this);
+    }
 }
 
 bool Net::CalcNet() {
